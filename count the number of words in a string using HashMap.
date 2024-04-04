@@ -22,9 +22,9 @@ class GFG {
 
 		for (String word : words) {
 			Integer integer = hashMap.get(word);
-    	    if (integer == null)
-            	hashMap.put(word, 1);
-            else {
+    			if (integer == null)
+            			hashMap.put(word, 1);
+           		 else {
 				hashMap.put(word, integer + 1);
 			}
 		}
