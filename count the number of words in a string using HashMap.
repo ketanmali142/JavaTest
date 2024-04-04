@@ -3,30 +3,35 @@ Q3:Write a Java Program to count the number of words in a string using HashMap.
 Java
 
 
-import java.io.*;
 import java.util.HashMap;
-import java.util.Map;
 
-class GFG {
-	public static void main(String[] args)
-	{
+public class WordCount {
+    public static void main(String[] args) {
+        String str = "I am Final year Student.";
 
-		// Declaring String
-		String str = "My Name is John";
-		// Declaring HashMap of <String, Integer>
-		Map<String, Integer> hashMap = new HashMap<>();
+        // Split the string into words
+        String[] words = str.split("\\s+");
 
-		// Splitting the words of string
-		// storing in array.
-		String[] words = str.split(" ");
+        // Create a HashMap 
+        HashMap<String, Integer> wordCountMap = new HashMap<>();
 
-		for (String word : words) {
-			Integer integer = hashMap.get(word);
-    			if (integer == null)
-            			hashMap.put(word, 1);
-           		 else {
-				hashMap.put(word, integer + 1);
-			}
-		}
-		System.out.println(hashMap);
-	}
+        // Count occurrences of each word
+        for (String word : words) {
+            // Remove non-alphabetic characters
+            word = word.replaceAll("[^a-zA-Z]", "");
+
+            // Convert word to lowercase for case-insensitivity
+            word = word.toLowerCase();
+
+            // Update the count in map
+            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+        }
+
+        // Print word count
+        System.out.println("Word Count:");
+        for (String word : wordCountMap.keySet()) {
+            System.out.println(word + ": " + wordCountMap.get(word));
+        }
+    }
+}
+
